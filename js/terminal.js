@@ -807,12 +807,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         try {
             print("Fetching blog posts index...");
-            const manifestResponse = await fetch('/posts/manifest.json');
+            const manifestResponse = await fetchData('/posts/manifest.json');
             const filenames = await manifestResponse.json();
 
             const posts = [];
             for (const filename of filenames) {
-                const response = await fetch(`/posts/${filename}`);
+                const response = await fetchData(`/posts/${filename}`);
                 const text = await response.text();
                 
                 const frontmatterMatch = text.match(/---([\s\S]*?)---/);
