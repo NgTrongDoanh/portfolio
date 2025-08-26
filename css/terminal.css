@@ -1,0 +1,192 @@
+body {
+    background-color: #000;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: 'Fira Code', monospace, 'Courier New', Courier;
+}
+
+.matrix-background-container canvas {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+#terminal-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    padding: 15px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    z-index: 2;
+    background-color: var(--terminal-bg-color);
+    color: var(--text-color);
+    font-size: 1.1rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#output {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.output-line {
+    margin-bottom: 5px;
+}
+
+.input-line {
+    display: flex;
+    align-items: center;
+}
+
+#prompt {
+    color: var(--prompt-color);
+    margin-right: 8px;
+    font-weight: bold;
+}
+
+#input {
+    background: transparent;
+    border: none;
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    flex-grow: 1;
+    outline: none;
+}
+
+.error {
+    color: var(--error-color);
+}
+
+a {
+    color: var(--link-color);
+    text-decoration: underline;
+}
+
+.neon-on #output > div {
+    text-shadow:
+        0 0 2px var(--neon-shadow-color-light),
+        0 0 6px var(--neon-shadow-color);
+}
+
+.neon-on .input-line {
+    text-shadow:
+        0 0 2px var(--neon-shadow-color-light),
+        0 0 6px var(--neon-shadow-color),
+        0 0 10px var(--neon-shadow-color);
+}
+
+.neon-on #prompt {
+    text-shadow:
+        0 0 2px #686868,
+        0 0 4px var(--neon-shadow-color-dark),
+        0 0 8px var(--neon-shadow-color-dark),
+        0 0 12px var(--neon-shadow-color-dark);
+}
+
+.neon-on .section-title, .neon-on a {
+    text-shadow:
+        0 0 2px var(--neon-shadow-color-light),
+        0 0 5px var(--neon-shadow-color);
+}
+
+.section-title {
+    font-weight: bold;
+    text-decoration: underline;
+    text-transform: uppercase;
+    color: var(--prompt-color);
+}
+
+.item-title {
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.item-details {
+    display: block;
+    padding-left: 15px;
+    opacity: 0.9;
+    margin: 5px 0;
+    white-space: pre-wrap;
+}
+
+.item-key {
+    padding-left: 15px;
+}
+
+.item-key a {
+    color: inherit;
+    text-decoration: none;
+}
+.item-key a:hover {
+    text-decoration: underline;
+    filter: none;
+}
+
+.file-content {
+    border: 1px dashed var(--prompt-color);
+    padding: 10px;
+    margin: 5px 0;
+    white-space: pre-wrap;
+    opacity: 0.9;
+}
+
+.separator {
+    display: block;
+    text-align: center;
+    opacity: 0.5;
+    margin: 10px 0;
+}
+
+.blog-post {
+    padding: 10px;
+    border-left: 2px solid var(--prompt-color);
+    margin-top: 10px;
+}
+
+.blog-post h1, .blog-post h2, .blog-post h3 { text-decoration: underline; margin-bottom: 10px; }
+.blog-post p { margin-bottom: 10px; }
+.blog-post a { color: var(--link-color); }
+.blog-post code { background-color: rgba(255, 255, 255, 0.1); padding: 2px 5px; border-radius: 3px; font-family: inherit; }
+.blog-post pre { background-color: rgba(0, 0, 0, 0.5); padding: 10px; margin: 10px 0; white-space: pre-wrap; word-wrap: break-word; border: 1px solid rgba(255, 255, 255, 0.2); }
+.blog-post blockquote { margin-left: 0; padding-left: 15px; border-left: 3px solid rgba(255, 255, 255, 0.4); font-style: italic; opacity: 0.8; }
+.blog-post ul, .blog-post ol { padding-left: 20px; }
+
+/* Thêm vào cuối file css/terminal.css */
+.temp-input {
+    background: transparent;
+    border: none;
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    flex-grow: 1;
+    outline: none;
+}
+
+/* Thêm vào cuối file css/terminal.css */
+.stats-container {
+    border: 1px solid var(--prompt-color);
+    padding: 10px;
+    margin: 5px 0;
+    display: inline-block; /* << Đây là chìa khóa! */
+    white-space: pre; /* Giữ nguyên định dạng của thẻ <pre> */
+}
+
+.avatar-image {
+    max-width: 400px; /* Giới hạn chiều rộng tối đa */
+    height: auto;
+    border-radius: 5px; /* Bo góc nhẹ */
+    margin: 5px 0;
+}
+/* Điều chỉnh cho màn hình nhỏ hơn */
+@media (max-width: 600px) {
+    .banner-avatar {
+        max-width: 80%; /* Chiếm 80% chiều rộng màn hình */
+    }
+}

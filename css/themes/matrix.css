@@ -1,0 +1,10 @@
+:root {
+    --text-color: #4bb2e2;
+    --prompt-color: #1546af;
+    --error-color: #FF4136;
+    --link-color: #289628;
+    --terminal-bg-color: rgba(0, 0, 0, 0.75);
+    
+    --neon-shadow-color: #4e264c;
+    --neon-shadow-color-light: #ccffcc;
+}

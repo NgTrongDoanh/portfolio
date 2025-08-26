@@ -1,0 +1,42 @@
+[
+  {
+    "id": "proj01",
+    "title": "Caro Game",
+    "description": "A simple Caro game built with Python and Pygame. This is the first project in my journey of studying at HCMUS.",
+    "tech": ["python", "pygame"],
+    "url": "https://github.com/NgTrongDoanh/CaroGame_IntroductionToInformationTechnology",
+    "download_url": "https://codeload.github.com/NgTrongDoanh/CaroGame_IntroductionToInformationTechnology/zip/refs/heads/master"
+  },
+  {
+    "id": "proj02",
+    "title": "Simple Proxy",
+    "description": "This project is a cross-platform proxy server built with C/C++. It includes features such as domain and IP blocking and provides a graphical user interface for ease of management.",
+    "tech": ["c/c++", "raylib", "networking"],
+    "url": "https://github.com/NgTrongDoanh/Proxy-Project",
+    "download_url": "https://github.com/NgTrongDoanh/Proxy-Project/archive/refs/heads/main.zip"
+  },
+  {
+    "id": "proj03",
+    "title": "Data Structures and Algorithms Visualizer",
+    "description": "This project is a visualization tool for common data structures and algorithms, built using C++ and the Raylib library. It allows users to interactively observe how data structures change step-by-step during fundamental operations like insertion, deletion, and search.",
+    "tech": ["c++", "data structures", "algorithms", "raylib"],
+    "url": "https://github.com/NgTrongDoanh/data-structures-visualization",
+    "download_url": "https://github.com/NgTrongDoanh/data-structures-visualization/archive/refs/heads/main.zip"
+  },
+  {
+    "id": "proj04",
+    "title": "LEGv8 CPU Simulator",
+    "description": "This project is A visual LEGv8 CPU simulator implemented in Java, designed for educational purposes to help understand the datapath and control signals of a simple pipelined processor. Users can write LEGv8 assembly, observe the step-by-step execution on a graphical datapath, and inspect register and memory states.",
+    "tech": ["java", "swingUI", "legv8", "assembly", "computer architecture"],
+    "url": "https://github.com/NgTrongDoanh/legv8-simulator",
+    "download_url": "https://github.com/NgTrongDoanh/legv8-simulator/archive/refs/heads/main.zip"
+  },
+  {
+    "id": "proj05",
+    "title": "Terminal Portfolio",
+    "description": "This is the portfolio you are using, built with JavaScript, HTML, and CSS to create an interactive command-line experience.",
+    "tech": ["javascript", "css", "html", "markdown"],
+    "url": "...",
+    "download_url": "..."
+  }
+]

@@ -1,0 +1,34 @@
+{
+  "info": "A third-year Computer Science student at University of Science, VNU-HCM, specializing in cybersecurity.",
+  "resume_path": "./assets/Resume.pdf",
+  "cover_letter_path": "./assets/CoverLetter.txt",
+  "contact": {
+    "Email": "nguyentrongdoanh2005@gmail.com",
+    "LinkedIn": "www.linkedin.com/in/ngtrongdoanh",
+    "GitHub": "https://github.com/ngtrongdoanh",
+    "Facebook": "https://www.facebook.com/NguyenTrongDoanh.1856",
+    "Phone": "097-----11"
+  },
+  "skills": {
+    "languages": ["C/C++", "Java", "Python", "Bash", "Assembly", "JavaScript"],
+    "tools": ["Nmap", "Wireshark", "Metasploit", "Burp Suite", "Binary Ninja", "GDB"],
+    "security domains": ["Penetration Testing", "Binary Exploitation", "Network Security"],
+    "software domains": ["Web Development (backend)", "Spring", "React"]
+  },
+  "experience": [
+    null
+  ],
+  "education": [
+    {
+      "institution": "Hung Vuong Gifted High School, Gia Lai",
+      "period": "Sept 2020 - May 2023",
+      "GPA (grade 12)": "9.4/10.0"
+    },
+    {
+      "institution": "University of Science, VNU-HCM",
+      "period": "Sept 2023 - Present",
+      "major": "Honors Program in Computer Science",
+      "current GPA": "9.19/10.0"
+    }
+  ]
+}

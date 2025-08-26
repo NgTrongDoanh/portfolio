@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to ngtrd's website :)</title>
+    
+    <link rel="stylesheet" href="./css/terminal.css">  
+    <link id="theme-link" rel="stylesheet" href="">
+</head>
+<body>
+    <div class="matrix-background-container">
+        <canvas id="mask" class="mask"></canvas>
+        <canvas id="color-overlay" class="mask"></canvas>
+        <canvas id="neo-matrix"></canvas>
+    </div>
+
+    <div id="terminal-container">
+        <div id="output"></div>
+        <div class="input-line">
+            <span id="prompt">guest@allaboutme:~$</span>
+            <input type="text" id="input">
+        </div>
+    </div>
+
+    <script src="./js/libs/marked.min.js"></script> 
+    <script src="./js/matrix.js"></script>
+    <script src="./js/terminal.js"></script>
+</body>
+</html>
