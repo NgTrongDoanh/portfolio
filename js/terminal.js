@@ -208,8 +208,8 @@ document.addEventListener('DOMContentLoaded', () => {
             Type 'help' to see a list of available commands.`
         else welcomeMessage = `From my DATE of birth to this very UPTIME, how long have I been alive?`
         
-        // typewriterPrint(`<pre>${meme}</pre>`, 0.5);
-        printHTML(`<pre>${meme}</pre>`);
+        typewriterPrint(`<pre>${meme}</pre>`, 0.5);
+        // printHTML(`<pre>${meme}</pre>`);
         print(welcomeMessage);
     }
 
