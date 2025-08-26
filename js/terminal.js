@@ -812,7 +812,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const posts = [];
             for (const filename of filenames) {
-                const response = await fetch(`./posts/${filename}`);
+                const response = await fetch(`/posts/${filename}`);
                 const text = await response.text();
                 
                 const frontmatterMatch = text.match(/---([\s\S]*?)---/);
