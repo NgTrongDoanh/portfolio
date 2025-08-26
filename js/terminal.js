@@ -807,7 +807,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         try {
             print("Fetching blog posts index...");
-            const manifestResponse = await fetch('./posts/manifest.json');
+            const manifestResponse = await fetch('/posts/manifest.json');
             const filenames = await manifestResponse.json();
 
             const posts = [];
