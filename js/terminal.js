@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const commandHistory = [];
     let historyIndex = 0;
     let currentMode = null; 
-    let blogMetadataCache = null;
+    // let blogMetadataCache = null;
 
     const AUTOCOMPLETE_COMMANDS = {
         global: ['help', 'helloworld', 'whoami', 'fortune', 'theme', 'about', 'project', 'blog', 'stats', 'clear', 'exit'],
@@ -802,9 +802,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- HELPER FUNCTIONS ---
     async function getAllPostsMetadata() {
-        if (blogMetadataCache) {
-            return blogMetadataCache;
-        }
+        // if (blogMetadataCache) {
+        //     return blogMetadataCache;
+        // }
         try {
             print("Fetching blog posts index...");
             const manifestResponse = await fetch('./posts/manifest.json');
@@ -831,8 +831,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     posts.push(metadata);
                 }
             }
-            blogMetadataCache = posts.sort((a, b) => new Date(b.date) - new Date(a.date)); // Sắp xếp theo ngày mới nhất
-            return blogMetadataCache;
+            return posts.sort((a, b) => new Date(b.date) - new Date(a.date)); 
+            // blogMetadataCache = posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+            // return blogMetadataCache;
         } catch (error) {
             printError("Could not fetch blog posts.");
             return null;
