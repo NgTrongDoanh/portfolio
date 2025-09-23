@@ -3,43 +3,14 @@
 // // ============================================
 
 // /**
-//  * Chuyển đổi RGB array sang giá trị Hue (độ màu)
-//  * @param {Array} rgbArray - Mảng RGB với giá trị [0,1]
-//  * @returns {number} Giá trị Hue từ 0-360 độ
-//  */
-// function rgbToHue(rgbArray) {
-//     // Chuyển từ [0,1] sang [0,255] và lấy Hue từ HSL
-//     return 360 * rgbToHsl(...rgbArray.map(function(value) {
-//         return Math.ceil(255 * value);
-//     }))[0];
-// }
-
-// /**
-//  * Chuyển đổi mã hex color sang RGB object
-//  * @param {string} hexColor - Mã hex color (có thể có # ở đầu)
-//  * @returns {Object|null} {r, g, b} hoặc null nếu invalid
-//  */
-// function hexToRgb(hexColor) {
-//     // Regex để parse hex color format: #RRGGBBAA hoặc RRGGBBAA
-//     let regexResult = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hexColor);
-    
-//     return regexResult ? {
-//         r: parseInt(regexResult[2], 16),  // Red component
-//         g: parseInt(regexResult[3], 16),  // Green component  
-//         b: parseInt(regexResult[4], 16)   // Blue component
-//         // Note: Regex có 4 groups nhưng chỉ dùng 3 groups cuối (bỏ qua alpha?)
-//     } : null;
-// }
-
-// /**
-//  * Chuyển đổi RGB sang HSL (Hue, Saturation, Lightness)
+//  * Convert RGB color to Hue
 //  * @param {number} red - Red component (0-255)
 //  * @param {number} green - Green component (0-255) 
 //  * @param {number} blue - Blue component (0-255)
-//  * @returns {Array} [hue, saturation, lightness] với giá trị [0,1]
+//  * @returns {Array} [hue, saturation, lightness] with value [0,1]
 //  */
 // function rgbToHsl(red, green, blue) {
-//     // Normalize RGB values từ [0,255] về [0,1]
+//     // Normalize RGB values from [0,255] to [0,1]
 //     red /= 255;
 //     green /= 255; 
 //     blue /= 255;
@@ -83,24 +54,24 @@
 // ============================================
 
 /**
- * Map một giá trị từ range này sang range khác (linear interpolation)
- * @param {number} value - Giá trị cần map
- * @param {number} fromMin - Min của range gốc
- * @param {number} fromMax - Max của range gốc
- * @param {number} toMin - Min của range đích
- * @param {number} toMax - Max của range đích
- * @returns {number} Giá trị đã được map
+ * Mapping value from one range to another
+ * @param {number} value - Value to be mapped
+ * @param {number} fromMin - Min of the original range
+ * @param {number} fromMax - Max of the original range
+ * @param {number} toMin - Min of the target range
+ * @param {number} toMax - Max of the target range
+ * @returns {number} Mapped value in the target range
  */
 function map(value, fromMin, fromMax, toMin, toMax) {
     return (value - fromMin) * (toMax - toMin) / (fromMax - fromMin) + toMin;
 }
 
 /**
- * Clamp giá trị trong khoảng min-max
- * @param {number} min - Giá trị tối thiểu
- * @param {number} max - Giá trị tối đa
- * @param {number} value - Giá trị cần clamp
- * @returns {number} Giá trị đã được clamp
+ * Clamp value within a specified range
+ * @param {number} min - Min value
+ * @param {number} max - Max value
+ * @param {number} value - Value to be clamped
+ * @returns {number} Clamped value
  */
 function clamp(min, max, value) {
     return value < min ? min : (value > max ? max : value);

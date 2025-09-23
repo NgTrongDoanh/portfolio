@@ -1,4 +1,4 @@
-[
+  [
   {
     "id": "proj01",
     "title": "Caro Game",
@@ -38,5 +38,13 @@
     "tech": ["javascript", "css", "html", "markdown"],
     "url": "...",
     "download_url": "..."
+  },
+  {
+    "id": "proj06",
+    "title": "UDP Flooding",
+    "description": "A simple UDP flooding tool built with C/C++.",
+    "tech": ["C/C++", "socket"],
+    "url": "https://github.com/NgTrongDoanh/udp-flood",
+    "download_url": "https://github.com/NgTrongDoanh/udp-flood/archive/refs/heads/main.zip"
   }
 ]
