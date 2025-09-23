@@ -9,14 +9,12 @@ category: "Web Exploitation"
 
 ## 1. Originated from a single message
 One fine day, or not :), I received a message from a friend saying the department website appeared to have an **SQL injection** vulnerability, but he couldn't exploit it because the original query was quite complex.
-With my long-standing dream of "hacking the university website", i fired up my laptop, launched Burp Suite and started testing.
-
----
+With my long-standing dream of "hacking the university website", I fired up my laptop, launched Burp Suite and started testing.
 
 ## 2. The first sign
 I tried the simplest payload: `'` into the search parameter, and the response was interesting:
 
-![ErrorResponse](../assets/posts/first-hacking-of-my-life/image_1.png)
+![ErrorResponse](/assets/posts/first-hacking-of-my-life/image_1.png)
 ```json
 {
     "Status": "ERROR",
@@ -26,9 +24,9 @@ I tried the simplest payload: `'` into the search parameter, and the response wa
 }
 ```
 
-Clearly a SQL syntax error occurred. However, the message indicates the original query was fairly complex, even written across multiple lines, so using `--` to commen out the remainder might not work.
+Clearly a SQL syntax error occurred. However, the message indicates the original query was fairly complex, even written across multiple lines, so using `--` to comment out the remainder might not work.
 
-## Trying more payloads
+## 3. Trying more payloads
 I continued with various other payloads
 | Payload                       | Response |
 |-------------------------------|----------|
@@ -41,10 +39,10 @@ It looks like the query uses dynamic SQL in a stored procedure and contains many
 
 Also, the error messages and keywords like `nvarchar`, `@`,... reveal the system can be running Microsoft SQL Server (MSSQL).
 
-## Breakthrough idea - using string concatenation
+## 4. Breakthrough idea - using string concatenation
 Because injections like `' or 1=1 -- ` were ineffective, and this is in a search function on the website, I thought about string concatenation in SQL and yes, it worked:
 
-![SuccessResponse](../assets/posts/first-hacking-of-my-life/image_2.png)
+![SuccessResponse](/assets/posts/first-hacking-of-my-life/image_2.png)
 ```json
 {
     "Status": "OK",
@@ -64,7 +62,7 @@ After a few improvements, the final payload that i used to bruteforce arbitrary 
 
 If the select subquery returns `'123'` (present in the post list), the condition is true. If `'zzzzz'` appears instead - the condition is false. From here, I could brute-force table names, column names, and data values... character by character (Side channel attack)
 
-## Automating the exploit and result
+## 5. Automating the exploit and result
 I wrote 3 scripts to automate the process (If you want to get these script, please contact me)
 - `brute_tables.py` - find table names in `sys.tables`
 - `brute_columns.py` - find column names in `infomation_schema.columns`
@@ -78,26 +76,26 @@ I wrote 3 scripts to automate the process (If you want to get these script, plea
 - `ASP.NET` identity table, having passwords properly hashed (not exploitable)
 - Leaked lots of data such as: grades, student names, phone number, emails, etc...
   
-## Furthermore - Account takeover vis `resetPasswordCode`
+## 6. Furthermore - Account takeover vis `resetPasswordCode`
 Not stopping there, the `resetPasswordCode` column made me think of the **Forgot Password** feature - which might noy be handled carefully. Testing on own account, I saw the feature sends a link to the email with a format like: ```https://www.fake.domain.com/fake_endpoint?fakeid=fake&v=reset&code=nhr1T7JXUgTFakuyvonsNn0QkcfXrimf```
 
-![ResetLink](../assets/posts/first-hacking-of-my-life/image_3.png)
+![ResetLink](/assets/posts/first-hacking-of-my-life/image_3.png)
 
 I though about a popular business logic vulnerability, the resetCode cannot be hashed before saved to database. Then I compared and realized: the `code` is exactly the `resetPasswordCode` from the database, and this value is not hashed :))
 
 I tried sending a reset request with the admin account’s code, and the admin password reset link was valid :)) Bruh
 
-## Severity
+## 7. Severity
 - Disclosure of all user information, grades, internal data,...
 - Unauthorized access to any account, including **admin**
 
-## Remediation suggestions
+## 8. Remediation suggestions
 - Using Prepared Statements / Parameterized Queries
 - Donot concatenate SQL strings
 - Hash all sensitive tokens (e.g resetPasswordCode)
 - Deploy a WAF or abnormal access detection mechanisms
 
-## Conclution
+## 9. Conclution
 This is my first time doing real-world web exploitation, and the very first target happened to be the department website where I study :). I achieved one of my school-day dreams - **hacking the university's website**.
 
 P/S: I reported the issue to the system administrators, and the vulnerability has already been patched.
