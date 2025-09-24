@@ -14,7 +14,7 @@ With my long-standing dream of "hacking the university website", I fired up my l
 ## 2. The first sign
 I tried the simplest payload: `'` into the search parameter, and the response was interesting:
 
-![ErrorResponse](/assets/posts/first-hacking-of-my-life/image_1.png)
+![ErrorResponse](./assets/posts/first-hacking-of-my-life/image_1.png)
 ```json
 {
     "Status": "ERROR",
@@ -42,7 +42,7 @@ Also, the error messages and keywords like `nvarchar`, `@`,... reveal the system
 ## 4. Breakthrough idea - using string concatenation
 Because injections like `' or 1=1 -- ` were ineffective, and this is in a search function on the website, I thought about string concatenation in SQL and yes, it worked:
 
-![SuccessResponse](/assets/posts/first-hacking-of-my-life/image_2.png)
+![SuccessResponse](./assets/posts/first-hacking-of-my-life/image_2.png)
 ```json
 {
     "Status": "OK",
@@ -79,7 +79,7 @@ I wrote 3 scripts to automate the process (If you want to get these script, plea
 ## 6. Furthermore - Account takeover vis `resetPasswordCode`
 Not stopping there, the `resetPasswordCode` column made me think of the **Forgot Password** feature - which might noy be handled carefully. Testing on own account, I saw the feature sends a link to the email with a format like: ```https://www.fake.domain.com/fake_endpoint?fakeid=fake&v=reset&code=nhr1T7JXUgTFakuyvonsNn0QkcfXrimf```
 
-![ResetLink](/assets/posts/first-hacking-of-my-life/image_3.png)
+![ResetLink](./assets/posts/first-hacking-of-my-life/image_3.png)
 
 I though about a popular business logic vulnerability, the resetCode cannot be hashed before saved to database. Then I compared and realized: the `code` is exactly the `resetPasswordCode` from the database, and this value is not hashed :))
 
